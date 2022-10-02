@@ -1,13 +1,17 @@
+#!/usr/bin/env python
 
 from logging import error, log
-
+import sys
 
 def loadProgram(filename):
     f = open(filename)
     lines = f.readlines()
     return lines
 
-lines = loadProgram("test.pst")
+if(len(sys.argv) > 1):
+    lines = loadProgram(sys.argv[1])
+else:
+    lines = loadProgram("test.pst")
 
 def do_write(line):
     output = line.removeprefix("(write-").removesuffix(")")
@@ -27,7 +31,7 @@ def do_repeat(line):
     #print("}")
 
 def do_command(line):
-    # Test if the line is a (write-message) 
+    # Test if the line is a (write-message)
     if (line.startswith("(write-") and line.endswith(")")):
         do_write(line)
         return
