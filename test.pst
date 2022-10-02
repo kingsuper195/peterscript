@@ -1,0 +1,2 @@
+# PeterScript test script 1: print "hello"
+|Repeat-10(write-hello-marc)(write-you-are-a-big-banana)|
